@@ -28,7 +28,7 @@
       position: relative;
       background-color: #F8F9FA;
       display: none;
-      padding: 40px 60px; /* 左右マージン拡大 */
+      padding: 40px 60px; /* 左右マージンを拡大 */
       box-sizing: border-box;
     }
     .slide.active {
@@ -45,7 +45,7 @@
       color: #2D3E50;
       font-weight: 500;
     }
-    /* 制作情報ブロック（スライド1用） */
+    /* 制作情報ブロックのスタイル */
     .creators-info {
       margin-top: 30px;
       font-size: 16px;
@@ -148,132 +148,16 @@
       margin: 20px 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
-    /* 円グラフ：コンテナ横並び用 */
-    .charts-container {
+    /* 円グラフ用コンテナ */
+    .pie-charts {
       display: flex;
-      flex-direction: row; /* 横方向に並べる */
-      justify-content: space-around;
-      align-items: flex-start;
-      width: 100%;
-      margin: 30px 0;
+      gap: 40px;
+      justify-content: center;
+      margin-top: 20px;
     }
-    .chart-wrapper {
-      width: 45%;
-      max-width: 300px;
-      text-align: center;
-    }
-    .chart-title {
-      margin-bottom: 15px;
-      font-size: 18px;
-      font-weight: 500;
-      color: #2D3E50;
-    }
-    @media (max-width: 768px) {
-      .charts-container {
-        flex-direction: column; /* モバイルでは縦積み */
-      }
-      .chart-wrapper {
-        width: 100%;
-        max-width: none;
-        margin-bottom: 30px;
-      }
-    }
-    /* アペンディックス用追加スタイル */
-    .appendix-content {
-      max-height: calc(100% - 160px); /* 見出し、洞察ボックス、ナビゲーション分の余白 */
-      overflow-y: auto;
-      padding-right: 15px; /* スクロールバー分 */
-    }
-    /* スクロールバーのスタイル */
-    #slide11 .appendix-content::-webkit-scrollbar {
-      width: 6px;
-    }
-    #slide11 .appendix-content::-webkit-scrollbar-track {
-      background: #f1f1f1;
-      border-radius: 3px;
-    }
-    #slide11 .appendix-content::-webkit-scrollbar-thumb {
-      background: #c1c1c1;
-      border-radius: 3px;
-    }
-    #slide11 .appendix-content::-webkit-scrollbar-thumb:hover {
-      background: #a8a8a8;
-    }
-    /* アペンディックス内部要素の調整 */
-    #slide11 .two-column-layout {
-      gap: 20px;
-    }
-    #slide11 .subheading {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 22px;
-    }
-    #slide11 .model-block {
-      padding: 10px;
-      margin-bottom: 15px;
-    }
-    #slide11 .model-block ul {
-      margin: 5px 0;
-    }
-    #slide11 .model-block li {
-      margin-bottom: 5px;
-      line-height: 1.4;
-    }
-    #slide11 .workflow-steps {
-      gap: 8px;
-    }
-    #slide11 .workflow-step {
-      gap: 8px;
-    }
-    #slide11 .step-content {
-      padding: 8px 10px;
-    }
-    #slide11 .step-content h3 {
-      font-size: 15px;
-    }
-    #slide11 .strategic-insight {
-      margin-top: 15px;
-      padding: 10px 15px;
-    }
-    #slide11 .strategic-insight p {
-      font-size: 16px;
-      margin: 5px 0;
-      line-height: 1.5;
-    }
-    #slide11 .note {
-      margin-top: 10px;
-      font-size: 13px;
-    }
-    @media (max-width: 768px) {
-      #slide11 .two-column-layout {
-        flex-direction: column;
-        gap: 15px;
-      }
-      #slide11 .left-column,
-      #slide11 .right-column {
-        width: 100%;
-      }
-      #slide11 .appendix-content {
-        max-height: calc(100% - 140px);
-        padding-right: 5px;
-      }
-      #slide11 .model-block,
-      #slide11 .workflow-steps {
-        margin-bottom: 10px;
-      }
-    }
-    @media (max-width: 480px) or (max-height: 480px) {
-      #slide11 .heading {
-        font-size: 24px;
-      }
-      #slide11 .insight-box {
-        font-size: 14px;
-        padding: 10px;
-        margin-bottom: 15px;
-      }
-      #slide11 .subheading {
-        font-size: 18px;
-      }
+    .pie-charts canvas {
+      border: 1px solid #eee;
+      background-color: #fff;
     }
   </style>
 </head>
@@ -283,7 +167,7 @@
     <div style="text-align: center; margin-top: 15%;">
       <h1 style="font-size: 36px; color: #2D3E50;">AI駆動プランニングの本質</h1>
       <h2 style="font-size: 24px;">マネジメント視点からの考察</h2>
-      <!-- 制作情報追加 -->
+      <!-- 制作情報追加（タイトルとサブタイトルの下） -->
       <div class="creators-info">
         <p>Shinichiro Tatsuta with Claude 3.7 Sonnet & ChatGPT o3-mini-high</p>
         <p class="date">March 4, 2025</p>
@@ -291,7 +175,7 @@
     </div>
     <div class="nav">
       <button class="nav-button prev" disabled>&larr;</button>
-      <span class="slide-number">1/11</span>
+      <span class="slide-number">1/10</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -322,7 +206,7 @@
     </div>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">2/11</span>
+      <span class="slide-number">2/10</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -343,7 +227,7 @@
     </div>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">3/11</span>
+      <span class="slide-number">3/10</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -374,7 +258,7 @@
     </table>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">4/11</span>
+      <span class="slide-number">4/10</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -405,7 +289,7 @@
     </table>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">5/11</span>
+      <span class="slide-number">5/10</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -434,20 +318,14 @@
         <td>・価値付加・意思決定: 50%</td>
       </tr>
     </table>
-    <!-- 円グラフ部分：新しい横並びレイアウト -->
-    <div class="charts-container">
-      <div class="chart-wrapper">
-        <h3 class="chart-title">従来型</h3>
-        <canvas id="traditional-chart"></canvas>
-      </div>
-      <div class="chart-wrapper">
-        <h3 class="chart-title">新時代</h3>
-        <canvas id="new-age-chart"></canvas>
-      </div>
+    <!-- 円グラフ：Chart.jsで描画 -->
+    <div class="pie-charts">
+      <canvas id="pieTraditional" width="200" height="200"></canvas>
+      <canvas id="pieNew" width="200" height="200"></canvas>
     </div>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">6/11</span>
+      <span class="slide-number">6/10</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -458,6 +336,7 @@
     <div class="insight-box">
       マネジメント革新: AI駆動プランニングの真価は「実行」から「設計・監督・価値付加」という高次マネジメントサイクルへの移行にある。
     </div>
+    <!-- 各フェーズを.phase-itemで区切り -->
     <div class="phase-item">
       <p><strong>フェーズ1: 戦略設計</strong><br>
       成果の明確な定義と評価基準の確立、情報リソースの最適配分</p>
@@ -476,7 +355,7 @@
     </div>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">7/11</span>
+      <span class="slide-number">7/10</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -505,7 +384,7 @@
     </div>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">8/11</span>
+      <span class="slide-number">8/10</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -534,7 +413,7 @@
     </div>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">9/11</span>
+      <span class="slide-number">9/10</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -545,6 +424,7 @@
     <div class="insight-box">
       戦略的示唆: AI駆動プランニングへの移行は、単なる技術導入ではなく、マネジメントパラダイムの根本的転換を意味する。
     </div>
+    <!-- 主要ポイントをハイライトボックスで囲む -->
     <div class="highlight-box">
       <p>成功するプランナーと組織は以下の視点を体現する：</p>
       <p>・プランニングの本質を「創造の実行」から「価値創出のマネジメント」へと再定義する</p>
@@ -554,109 +434,7 @@
     </div>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">10/11</span>
-      <button class="nav-button next">&rarr;</button>
-    </div>
-  </div>
-
-  <!-- スライド11: Appendix: AIモデル活用最適化フレームワーク -->
-  <div class="slide" id="slide11">
-    <h1 class="heading" style="font-size: 36px; color: #2D3E50; text-align: center;">Appendix: AIモデル活用最適化フレームワーク</h1>
-    <div class="insight-box">
-      各AIモデルの特性を理解し、最適なワークフローを構築することで、効果と品質を両立したプランニングを実現する
-    </div>
-    <!-- アペンディックスコンテンツにスクロール可能属性を追加 -->
-    <div class="appendix-content" tabindex="0" title="スクロールして続きを表示">
-      <div class="two-column-layout">
-        <div class="left-column">
-          <h2 class="subheading" style="font-size: 30px; color: #2D3E50;">AIモデル特性比較</h2>
-          <div class="model-comparison">
-            <div class="model-block claude-block">
-              <div class="model-icon">C</div>
-              <h3>Claude</h3>
-              <ul>
-                <li>概念整理と全体構造の設計に優れる</li>
-                <li>洗練された文章と構造化された思考を提供</li>
-                <li>抽象的なアイデアの具体化に強み</li>
-              </ul>
-            </div>
-            <div class="model-block chatgpt-block">
-              <div class="model-icon">G</div>
-              <h3>ChatGPT</h3>
-              <ul>
-                <li>明確に構造化された指示に強い反応</li>
-                <li>箇条書きやステップ形式での実行性に優れる</li>
-                <li>詳細な環境調査と情報収集に強み</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="right-column">
-          <h2 class="subheading" style="font-size: 30px; color: #2D3E50;">最適化AIワークフロー</h2>
-          <div class="workflow-steps">
-            <div class="workflow-step">
-              <div class="step-number">1</div>
-              <div class="step-content">
-                <h3>意思・北極星の設定</h3>
-                <div class="step-owner">人間</div>
-              </div>
-            </div>
-            <div class="workflow-step">
-              <div class="step-number">2</div>
-              <div class="step-content">
-                <h3>概念、考え方の整理</h3>
-                <div class="step-owner">人間×Claude</div>
-              </div>
-            </div>
-            <div class="workflow-step">
-              <div class="step-number">3</div>
-              <div class="step-content">
-                <h3>具体的な環境調査</h3>
-                <div class="step-owner chatgpt-owner">ChatGPT</div>
-              </div>
-            </div>
-            <div class="workflow-step">
-              <div class="step-number">4</div>
-              <div class="step-content">
-                <h3>構造化された指示作成</h3>
-                <div class="step-owner claude-owner">Claude</div>
-              </div>
-            </div>
-            <div class="workflow-step">
-              <div class="step-number">5</div>
-              <div class="step-content">
-                <h3>指示の実行</h3>
-                <div class="step-owner chatgpt-owner">ChatGPT</div>
-              </div>
-            </div>
-            <div class="workflow-step">
-              <div class="step-number">6</div>
-              <div class="step-content">
-                <h3>成果物のチェック</h3>
-                <div class="step-owner">人間×Claude</div>
-              </div>
-            </div>
-            <div class="workflow-step">
-              <div class="step-number">7</div>
-              <div class="step-content">
-                <h3>成果物の共有・完パケ</h3>
-                <div class="step-owner">人間</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="strategic-insight">
-        <h2 class="subheading" style="font-size: 30px; color: #2D3E50;">戦略的インサイト</h2>
-        <p>AIモデルの特性を理解し、各工程に最適なツールを選択することで、効率と品質を両立したワークフローを実現できます。Claudeは抽象的な思考と全体設計に、ChatGPTは具体的な実行と調査に特化させることで、人間の意思決定と創造性を拡張し、ビジネスパフォーマンスを最大化します。</p>
-        <div class="note">
-          <p>※これらのプロセスを全自動化する場合は、DifyによるAIワークフロー構築が効果的です。</p>
-        </div>
-      </div>
-    </div>
-    <div class="nav">
-      <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">11/11</span>
+      <span class="slide-number">10/10</span>
       <button class="nav-button next" disabled>&rarr;</button>
     </div>
   </div>
@@ -664,7 +442,7 @@
   <!-- JavaScript -->
   <script>
     let currentSlide = 1;
-    const totalSlides = 11; // 総スライド数を11に更新
+    const totalSlides = 10;
 
     // 指定スライドを表示する関数
     function showSlide(slideNumber) {
@@ -681,7 +459,7 @@
       document.querySelectorAll('.slide').forEach((slide, index) => {
         const slideNum = index + 1;
         if (slide.classList.contains('active')) {
-          slide.querySelector('.slide-number').textContent = slideNum + '/11';
+          slide.querySelector('.slide-number').textContent = slideNum + '/10';
           const prevBtn = slide.querySelector('.nav-button.prev');
           const nextBtn = slide.querySelector('.nav-button.next');
           prevBtn.disabled = (slideNum === 1);
@@ -722,51 +500,37 @@
     // Chart.js を使用した円グラフ描画（スライド6）
     window.addEventListener('load', () => {
       showSlide(currentSlide);
-      const chartOptions = {
-        responsive: true,
-        maintainAspectRatio: true,
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: {
-              padding: 20,
-              font: {
-                size: 14
-              },
-              boxWidth: 15
-            }
-          }
-        }
-      };
-
-      // 従来型の円グラフ
-      const traditionalCtx = document.getElementById('traditional-chart').getContext('2d');
-      new Chart(traditionalCtx, {
+      // 従来型円グラフ
+      const ctxTrad = document.getElementById('pieTraditional').getContext('2d');
+      new Chart(ctxTrad, {
         type: 'pie',
         data: {
-          labels: ['情報収集 40%', '分析 30%', 'アウトプット作成 30%'],
+          labels: ['情報収集', '分析', 'アウトプット作成'],
           datasets: [{
             data: [40, 30, 30],
-            backgroundColor: ['#95A5A6', '#ADB9BD', '#C5CED1'],
-            borderWidth: 0
+            backgroundColor: ['#95A5A6', '#7f8c8d', '#bdc3c7']
           }]
         },
-        options: chartOptions
+        options: {
+          responsive: false,
+          maintainAspectRatio: false
+        }
       });
-
-      // 新時代の円グラフ
-      const newAgeCtx = document.getElementById('new-age-chart').getContext('2d');
-      new Chart(newAgeCtx, {
+      // AI駆動型円グラフ
+      const ctxNew = document.getElementById('pieNew').getContext('2d');
+      new Chart(ctxNew, {
         type: 'pie',
         data: {
-          labels: ['AI指示設計 20%', 'AI出力評価 30%', '価値付加・意思決定 50%'],
+          labels: ['AI指示設計', 'AI出力評価', '価値付加・意思決定'],
           datasets: [{
             data: [20, 30, 50],
-            backgroundColor: ['#3498DB', '#5dade2', '#2874a6'],
-            borderWidth: 0
+            backgroundColor: ['#3498DB', '#5dade2', '#2874a6']
           }]
         },
-        options: chartOptions
+        options: {
+          responsive: false,
+          maintainAspectRatio: false
+        }
       });
     });
   </script>
