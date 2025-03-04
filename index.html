@@ -45,7 +45,7 @@
       color: #2D3E50;
       font-weight: 500;
     }
-    /* 制作情報ブロックのスタイル */
+    /* 制作情報ブロックのスタイル（スライド1用） */
     .creators-info {
       margin-top: 30px;
       font-size: 16px;
@@ -148,16 +148,135 @@
       margin: 20px 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
-    /* 円グラフ用コンテナ */
-    .pie-charts {
-      display: flex;
-      gap: 40px;
-      justify-content: center;
+    /* アペンディックス用追加スタイル */
+    .appendix-content {
       margin-top: 20px;
     }
-    .pie-charts canvas {
-      border: 1px solid #eee;
-      background-color: #fff;
+    .two-column-layout {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+    .left-column, .right-column {
+      flex: 1;
+    }
+    .model-comparison {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .model-block {
+      background-color: #f8f9fb;
+      border-radius: 5px;
+      padding: 15px;
+      position: relative;
+    }
+    .claude-block {
+      border-left: 4px solid #8A6BE8;
+    }
+    .chatgpt-block {
+      border-left: 4px solid #10A37F;
+    }
+    .model-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+    .claude-block .model-icon {
+      background-color: #8A6BE8;
+    }
+    .chatgpt-block .model-icon {
+      background-color: #10A37F;
+    }
+    .model-block h3 {
+      display: inline-block;
+      margin: 0 0 10px 0;
+      font-size: 20px;
+      font-weight: 500;
+    }
+    .model-block ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .model-block li {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    .workflow-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .workflow-step {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .step-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #2D3E50;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .step-content {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f8f9fb;
+      padding: 10px 15px;
+      border-radius: 4px;
+    }
+    .step-content h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .step-owner {
+      background-color: #e1e5eb;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .claude-owner {
+      background-color: #EDE7FC;
+      color: #8A6BE8;
+    }
+    .chatgpt-owner {
+      background-color: #E3F6F2;
+      color: #10A37F;
+    }
+    .strategic-insight {
+      margin-top: 30px;
+      background-color: #f0f7fd;
+      border-left: 4px solid #3498DB;
+      padding: 15px 20px;
+      border-radius: 0 4px 4px 0;
+    }
+    .strategic-insight p {
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+    .note {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #666;
+      font-style: italic;
     }
   </style>
 </head>
@@ -167,7 +286,7 @@
     <div style="text-align: center; margin-top: 15%;">
       <h1 style="font-size: 36px; color: #2D3E50;">AI駆動プランニングの本質</h1>
       <h2 style="font-size: 24px;">マネジメント視点からの考察</h2>
-      <!-- 制作情報追加（タイトルとサブタイトルの下） -->
+      <!-- 制作情報追加 -->
       <div class="creators-info">
         <p>Shinichiro Tatsuta with Claude 3.7 Sonnet & ChatGPT o3-mini-high</p>
         <p class="date">March 4, 2025</p>
@@ -175,7 +294,7 @@
     </div>
     <div class="nav">
       <button class="nav-button prev" disabled>&larr;</button>
-      <span class="slide-number">1/10</span>
+      <span class="slide-number">1/11</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -206,7 +325,7 @@
     </div>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">2/10</span>
+      <span class="slide-number">2/11</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -227,7 +346,7 @@
     </div>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">3/10</span>
+      <span class="slide-number">3/11</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -258,7 +377,7 @@
     </table>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">4/10</span>
+      <span class="slide-number">4/11</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -289,7 +408,7 @@
     </table>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">5/10</span>
+      <span class="slide-number">5/11</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -325,7 +444,7 @@
     </div>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">6/10</span>
+      <span class="slide-number">6/11</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -355,7 +474,7 @@
     </div>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">7/10</span>
+      <span class="slide-number">7/11</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -384,7 +503,7 @@
     </div>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">8/10</span>
+      <span class="slide-number">8/11</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -413,7 +532,7 @@
     </div>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">9/10</span>
+      <span class="slide-number">9/11</span>
       <button class="nav-button next">&rarr;</button>
     </div>
   </div>
@@ -424,7 +543,6 @@
     <div class="insight-box">
       戦略的示唆: AI駆動プランニングへの移行は、単なる技術導入ではなく、マネジメントパラダイムの根本的転換を意味する。
     </div>
-    <!-- 主要ポイントをハイライトボックスで囲む -->
     <div class="highlight-box">
       <p>成功するプランナーと組織は以下の視点を体現する：</p>
       <p>・プランニングの本質を「創造の実行」から「価値創出のマネジメント」へと再定義する</p>
@@ -434,7 +552,108 @@
     </div>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
-      <span class="slide-number">10/10</span>
+      <span class="slide-number">10/11</span>
+      <button class="nav-button next">&rarr;</button>
+    </div>
+  </div>
+
+  <!-- スライド11: Appendix: AIモデル活用最適化フレームワーク -->
+  <div class="slide" id="slide11">
+    <h1 class="heading" style="font-size: 36px; color: #2D3E50; text-align: center;">Appendix: AIモデル活用最適化フレームワーク</h1>
+    <div class="insight-box">
+      各AIモデルの特性を理解し、最適なワークフローを構築することで、効果と品質を両立したプランニングを実現する
+    </div>
+    <div class="appendix-content">
+      <div class="two-column-layout">
+        <div class="left-column">
+          <h2 class="subheading" style="font-size: 30px; color: #2D3E50;">AIモデル特性比較</h2>
+          <div class="model-comparison">
+            <div class="model-block claude-block">
+              <div class="model-icon">C</div>
+              <h3>Claude</h3>
+              <ul>
+                <li>概念整理と全体構造の設計に優れる</li>
+                <li>洗練された文章と構造化された思考を提供</li>
+                <li>抽象的なアイデアの具体化に強み</li>
+              </ul>
+            </div>
+            <div class="model-block chatgpt-block">
+              <div class="model-icon">G</div>
+              <h3>ChatGPT</h3>
+              <ul>
+                <li>明確に構造化された指示に強い反応</li>
+                <li>箇条書きやステップ形式での実行性に優れる</li>
+                <li>詳細な環境調査と情報収集に強み</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="right-column">
+          <h2 class="subheading" style="font-size: 30px; color: #2D3E50;">最適化AIワークフロー</h2>
+          <div class="workflow-steps">
+            <div class="workflow-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h3>意思・北極星の設定</h3>
+                <div class="step-owner">人間</div>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h3>概念、考え方の整理</h3>
+                <div class="step-owner">人間×Claude</div>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h3>具体的な環境調査</h3>
+                <div class="step-owner chatgpt-owner">ChatGPT</div>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h3>構造化された指示作成</h3>
+                <div class="step-owner claude-owner">Claude</div>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">5</div>
+              <div class="step-content">
+                <h3>指示の実行</h3>
+                <div class="step-owner chatgpt-owner">ChatGPT</div>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">6</div>
+              <div class="step-content">
+                <h3>成果物のチェック</h3>
+                <div class="step-owner">人間×Claude</div>
+              </div>
+            </div>
+            <div class="workflow-step">
+              <div class="step-number">7</div>
+              <div class="step-content">
+                <h3>成果物の共有・完パケ</h3>
+                <div class="step-owner">人間</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="strategic-insight">
+        <h2 class="subheading" style="font-size: 30px; color: #2D3E50;">戦略的インサイト</h2>
+        <p>AIモデルの特性を理解し、各工程に最適なツールを選択することで、効率と品質を両立したワークフローを実現できます。Claudeは抽象的な思考と全体設計に、ChatGPTは具体的な実行と調査に特化させることで、人間の意思決定と創造性を拡張し、ビジネスパフォーマンスを最大化します。</p>
+        <div class="note">
+          <p>※これらのプロセスを全自動化する場合は、DifyによるAIワークフロー構築が効果的です。</p>
+        </div>
+      </div>
+    </div>
+    <div class="nav">
+      <button class="nav-button prev">&larr;</button>
+      <span class="slide-number">11/11</span>
       <button class="nav-button next" disabled>&rarr;</button>
     </div>
   </div>
@@ -442,7 +661,7 @@
   <!-- JavaScript -->
   <script>
     let currentSlide = 1;
-    const totalSlides = 10;
+    const totalSlides = 11; // スライド総数を11に更新
 
     // 指定スライドを表示する関数
     function showSlide(slideNumber) {
@@ -459,7 +678,7 @@
       document.querySelectorAll('.slide').forEach((slide, index) => {
         const slideNum = index + 1;
         if (slide.classList.contains('active')) {
-          slide.querySelector('.slide-number').textContent = slideNum + '/10';
+          slide.querySelector('.slide-number').textContent = slideNum + '/11';
           const prevBtn = slide.querySelector('.nav-button.prev');
           const nextBtn = slide.querySelector('.nav-button.next');
           prevBtn.disabled = (slideNum === 1);
