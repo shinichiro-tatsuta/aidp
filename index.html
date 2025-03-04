@@ -45,6 +45,18 @@
       color: #2D3E50;
       font-weight: 500;
     }
+    /* 制作情報ブロックのスタイル */
+    .creators-info {
+      margin-top: 30px;
+      font-size: 16px;
+      color: #666;
+      text-align: center;
+      font-style: italic;
+    }
+    .creators-info .date {
+      margin-top: 5px;
+      font-size: 14px;
+    }
     /* テキストサイズ・行間の調整 */
     p, li, td {
       font-size: 20px;
@@ -155,6 +167,11 @@
     <div style="text-align: center; margin-top: 15%;">
       <h1 style="font-size: 36px; color: #2D3E50;">AI駆動プランニングの本質</h1>
       <h2 style="font-size: 24px;">マネジメント視点からの考察</h2>
+      <!-- 制作情報追加（タイトルとサブタイトルの下） -->
+      <div class="creators-info">
+        <p>Shinichiro Tatsuta with Claude 3.7 Sonnet & ChatGPT o3-mini-high</p>
+        <p class="date">March 4, 2025</p>
+      </div>
     </div>
     <div class="nav">
       <button class="nav-button prev" disabled>&larr;</button>
