@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI駆動プランニングの本質：マネジメント視点からの考察</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     /* 共通設定 */
     body {
@@ -26,22 +28,31 @@
       position: relative;
       background-color: #F8F9FA;
       display: none;
-      padding: 40px;
+      padding: 40px 60px; /* 左右マージンを拡大 */
       box-sizing: border-box;
     }
     .slide.active {
       display: block;
     }
-    /* 洞察ボックス */
+    /* 洞察ボックス：見出しの直後に配置 */
     .insight-box {
       background-color: #f0f7fd;
       border-left: 4px solid #3498DB;
       padding: 15px 20px;
-      margin-bottom: 30px;
+      margin: 15px 0 30px 0;
       border-radius: 0 4px 4px 0;
       font-style: italic;
       color: #2D3E50;
       font-weight: 500;
+    }
+    /* テキストサイズ・行間の調整 */
+    p, li, td {
+      font-size: 20px;
+      line-height: 1.8;
+    }
+    /* 箇条書き項目間のスペース */
+    li {
+      margin-bottom: 15px;
     }
     /* ナビゲーション */
     .nav {
@@ -58,6 +69,8 @@
       cursor: pointer;
       margin: 0 20px;
       color: #3498DB;
+      width: 45px;
+      height: 45px;
     }
     .nav-button:disabled {
       color: #ccc;
@@ -94,8 +107,9 @@
     .comparison-table td {
       padding: 15px;
       border: 1px solid #eee;
-      font-size: 16px;
+      font-size: 20px;
       text-align: left;
+      width: 50%;
     }
     .comparison-table th.traditional {
       background-color: #95A5A6;
@@ -107,14 +121,20 @@
       color: white;
       font-weight: 500;
     }
-    /* セクション分割 */
-    .section {
-      margin-bottom: 30px;
+    /* フェーズ項目の視覚的区切り */
+    .phase-item {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
     }
-    .section h3 {
-      font-size: 30px;
-      color: #2D3E50;
-      margin-bottom: 10px;
+    /* 将来展望の強調ボックス */
+    .highlight-box {
+      background-color: #f5f9fc;
+      border: 1px solid #d1e6f6;
+      border-radius: 5px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
     /* 円グラフ用コンテナ */
     .pie-charts {
@@ -126,14 +146,6 @@
     .pie-charts canvas {
       border: 1px solid #eee;
       background-color: #fff;
-    }
-    /* 将来展望の中央ボックス */
-    .future-box {
-      border: 2px solid #3498DB;
-      padding: 20px;
-      text-align: center;
-      font-size: 18px;
-      line-height: 1.6;
     }
   </style>
 </head>
@@ -153,12 +165,12 @@
 
   <!-- スライド2: プランニング業務のパラダイムシフト -->
   <div class="slide" id="slide2">
+    <h2 style="font-size: 30px; color: #2D3E50;">プランニング業務のパラダイムシフト</h2>
     <div class="insight-box">
       本質的変革: プランニング業務における変化は単なるツール導入ではなく、「自己完結型制作」から「価値創出のためのマネジメント」への根本的転換である。
     </div>
-    <h2 style="font-size: 30px; color: #2D3E50;">プランニング業務のパラダイムシフト</h2>
     <div class="columns">
-      <div class="column" style="background-color: #f8f9fa;">
+      <div class="column">
         <h3 style="color: #95A5A6;">従来型プランニング</h3>
         <ul>
           <li>インプット: 人による情報収集・データ取得</li>
@@ -166,7 +178,7 @@
           <li>アウトプット: 人による企画書・プレゼン資料作成</li>
         </ul>
       </div>
-      <div class="column" style="background-color: #f8f9fa;">
+      <div class="column">
         <h3 style="color: #3498DB;">AI駆動型プランニング</h3>
         <ul>
           <li>インプット: AIへの情報提供と学習素材の戦略的管理</li>
@@ -184,10 +196,10 @@
 
   <!-- スライド3: プランナーの役割転換（概要） -->
   <div class="slide" id="slide3">
+    <h2 style="font-size: 30px; color: #2D3E50;">プランナーの役割転換</h2>
     <div class="insight-box">
       変革の核心: プランナーの役割は「情報処理の実行者」から「価値創造のオーケストレーター」へと高度化する。
     </div>
-    <h2 style="font-size: 30px; color: #2D3E50;">プランナーの役割転換</h2>
     <div style="margin-top: 30px;">
       <p><strong>1. スキルセットの再構築</strong><br>
       情報収集・分析から、AIとの協働を通じた成果最大化能力へ</p>
@@ -205,10 +217,10 @@
 
   <!-- スライド4: スキルセットの再構築 -->
   <div class="slide" id="slide4">
+    <h2 style="font-size: 30px; color: #2D3E50;">スキルセットの再構築</h2>
     <div class="insight-box">
       マネジメント視点: AIを通じて最適な成果を引き出す「指揮者」としてのスキルが差別化要因となる。
     </div>
-    <h2 style="font-size: 30px; color: #2D3E50;">スキルセットの再構築</h2>
     <table class="comparison-table">
       <tr>
         <th class="traditional">従来型</th>
@@ -236,18 +248,18 @@
 
   <!-- スライド5: 思考プロセスの高度化 -->
   <div class="slide" id="slide5">
+    <h2 style="font-size: 30px; color: #2D3E50;">思考プロセスの高度化</h2>
     <div class="insight-box">
       マネジメント視点: 成果物の質とスピードを両立させる並行処理的思考がプランナーの新たな強みとなる。
     </div>
-    <h2 style="font-size: 30px; color: #2D3E50;">思考プロセスの高度化</h2>
     <table class="comparison-table">
       <tr>
         <th class="traditional">従来型</th>
         <th class="new-age">新時代</th>
       </tr>
       <tr>
-        <td>・線形的思考<br>（収集→分析→表現）</td>
-        <td>・協働的・反復的思考<br>（指示→評価→再指示→統合）</td>
+        <td>・線形的思考<br>(収集→分析→表現)</td>
+        <td>・協働的・反復的思考<br>(指示→評価→再指示→統合)</td>
       </tr>
       <tr>
         <td>・個人的思考</td>
@@ -267,10 +279,10 @@
 
   <!-- スライド6: 時間配分の戦略的転換 -->
   <div class="slide" id="slide6">
+    <h2 style="font-size: 30px; color: #2D3E50;">時間配分の戦略的転換</h2>
     <div class="insight-box">
       マネジメント視点: 意思決定の質とスピードを両立させる時間活用の再設計が競争優位の源泉となる。
     </div>
-    <h2 style="font-size: 30px; color: #2D3E50;">時間配分の戦略的転換</h2>
     <table class="comparison-table">
       <tr>
         <th class="traditional">従来型</th>
@@ -289,7 +301,7 @@
         <td>・価値付加・意思決定: 50%</td>
       </tr>
     </table>
-    <!-- 円グラフ配置（左右または下） -->
+    <!-- 円グラフ：Chart.jsで描画 -->
     <div class="pie-charts">
       <canvas id="pieTraditional" width="200" height="200"></canvas>
       <canvas id="pieNew" width="200" height="200"></canvas>
@@ -303,17 +315,24 @@
 
   <!-- スライド7: AI駆動プランニングの戦略的フレームワーク -->
   <div class="slide" id="slide7">
+    <h2 style="font-size: 30px; color: #2D3E50;">AI駆動プランニングの戦略的フレームワーク</h2>
     <div class="insight-box">
       マネジメント革新: AI駆動プランニングの真価は「実行」から「設計・監督・価値付加」という高次マネジメントサイクルへの移行にある。
     </div>
-    <h2 style="font-size: 30px; color: #2D3E50;">AI駆動プランニングの戦略的フレームワーク</h2>
-    <div style="margin-top: 20px;">
+    <!-- 各フェーズを.phase-itemで区切り -->
+    <div class="phase-item">
       <p><strong>フェーズ1: 戦略設計</strong><br>
       成果の明確な定義と評価基準の確立、情報リソースの最適配分</p>
+    </div>
+    <div class="phase-item">
       <p><strong>フェーズ2: 実行統制</strong><br>
       精緻な指示とタイムリーな進捗監視、中間成果の質的評価</p>
+    </div>
+    <div class="phase-item">
       <p><strong>フェーズ3: 価値統合</strong><br>
       AIの成果物評価と人間特有の洞察による付加価値創造</p>
+    </div>
+    <div class="phase-item">
       <p><strong>フェーズ4: 展開最適化</strong><br>
       最終成果物の一貫性確保と効果的な展開戦略構築</p>
     </div>
@@ -326,10 +345,10 @@
 
   <!-- スライド8: 知識労働の再定義とビジネスモデル -->
   <div class="slide" id="slide8">
+    <h2 style="font-size: 30px; color: #2D3E50;">知識労働の再定義とビジネスモデル</h2>
     <div class="insight-box">
       知的生産性の新たな地平: これからの知識労働の価値は「知識の所有」ではなく「知識資源の効果的マネジメント」にシフトする。
     </div>
-    <h2 style="font-size: 30px; color: #2D3E50;">知識労働の再定義とビジネスモデル</h2>
     <div class="section">
       <h3>知識労働の再定義</h3>
       <ul>
@@ -355,10 +374,10 @@
 
   <!-- スライド9: 組織と変化のマネジメント -->
   <div class="slide" id="slide9">
+    <h2 style="font-size: 30px; color: #2D3E50;">組織と変化のマネジメント</h2>
     <div class="insight-box">
       組織モデルの再構築: AIは単なるツールではなく「知的協働者」として組織に統合され、新たな組織設計原理が求められる。
     </div>
-    <h2 style="font-size: 30px; color: #2D3E50;">組織と変化のマネジメント</h2>
     <div class="section">
       <h3>組織論的視点</h3>
       <ul>
@@ -384,11 +403,12 @@
 
   <!-- スライド10: AI駆動プランニングの将来展望 -->
   <div class="slide" id="slide10">
+    <h2 style="font-size: 30px; color: #2D3E50;">AI駆動プランニングの将来展望</h2>
     <div class="insight-box">
       戦略的示唆: AI駆動プランニングへの移行は、単なる技術導入ではなく、マネジメントパラダイムの根本的転換を意味する。
     </div>
-    <h2 style="font-size: 30px; color: #2D3E50;">AI駆動プランニングの将来展望</h2>
-    <div class="future-box" style="margin-top: 30px;">
+    <!-- 主要ポイントをハイライトボックスで囲む -->
+    <div class="highlight-box">
       <p>成功するプランナーと組織は以下の視点を体現する：</p>
       <p>・プランニングの本質を「創造の実行」から「価値創出のマネジメント」へと再定義する</p>
       <p>・AIとの協働を通じた価値最大化の能力を組織の核心的競争力として育成する</p>
@@ -460,36 +480,41 @@
       }
     });
 
-    // 円グラフ描画用関数
-    function drawPieChart(canvasId, data, colors) {
-      const canvas = document.getElementById(canvasId);
-      if (!canvas.getContext) return;
-      const ctx = canvas.getContext('2d');
-      const total = data.reduce((a, b) => a + b, 0);
-      let startAngle = 0;
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-      const radius = Math.min(centerX, centerY) - 10;
-      
-      data.forEach((value, i) => {
-        const sliceAngle = (value / total) * 2 * Math.PI;
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.arc(centerX, centerY, radius, startAngle, startAngle + sliceAngle);
-        ctx.closePath();
-        ctx.fillStyle = colors[i];
-        ctx.fill();
-        startAngle += sliceAngle;
-      });
-    }
-
-    // 初回描画（スライド6の円グラフ）
+    // Chart.js を使用した円グラフ描画（スライド6）
     window.addEventListener('load', () => {
-      // 従来型：40%, 30%, 30%
-      drawPieChart('pieTraditional', [40, 30, 30], ["#95A5A6", "#7f8c8d", "#bdc3c7"]);
-      // 新時代：20%, 30%, 50%
-      drawPieChart('pieNew', [20, 30, 50], ["#3498DB", "#5dade2", "#2874a6"]);
       showSlide(currentSlide);
+      // 従来型円グラフ
+      const ctxTrad = document.getElementById('pieTraditional').getContext('2d');
+      new Chart(ctxTrad, {
+        type: 'pie',
+        data: {
+          labels: ['情報収集', '分析', 'アウトプット作成'],
+          datasets: [{
+            data: [40, 30, 30],
+            backgroundColor: ['#95A5A6', '#7f8c8d', '#bdc3c7']
+          }]
+        },
+        options: {
+          responsive: false,
+          maintainAspectRatio: false
+        }
+      });
+      // AI駆動型円グラフ
+      const ctxNew = document.getElementById('pieNew').getContext('2d');
+      new Chart(ctxNew, {
+        type: 'pie',
+        data: {
+          labels: ['AI指示設計', 'AI出力評価', '価値付加・意思決定'],
+          datasets: [{
+            data: [20, 30, 50],
+            backgroundColor: ['#3498DB', '#5dade2', '#2874a6']
+          }]
+        },
+        options: {
+          responsive: false,
+          maintainAspectRatio: false
+        }
+      });
     });
   </script>
 </body>
