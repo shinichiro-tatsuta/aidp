@@ -28,7 +28,7 @@
       position: relative;
       background-color: #F8F9FA;
       display: none;
-      padding: 40px 60px; /* 左右マージンを拡大 */
+      padding: 40px 60px; /* 左右マージン拡大 */
       box-sizing: border-box;
     }
     .slide.active {
@@ -45,7 +45,7 @@
       color: #2D3E50;
       font-weight: 500;
     }
-    /* 制作情報ブロックのスタイル（スライド1用） */
+    /* 制作情報ブロック（スライド1用） */
     .creators-info {
       margin-top: 30px;
       font-size: 16px;
@@ -148,135 +148,132 @@
       margin: 20px 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
+    /* 円グラフ：コンテナ横並び用 */
+    .charts-container {
+      display: flex;
+      flex-direction: row; /* 横方向に並べる */
+      justify-content: space-around;
+      align-items: flex-start;
+      width: 100%;
+      margin: 30px 0;
+    }
+    .chart-wrapper {
+      width: 45%;
+      max-width: 300px;
+      text-align: center;
+    }
+    .chart-title {
+      margin-bottom: 15px;
+      font-size: 18px;
+      font-weight: 500;
+      color: #2D3E50;
+    }
+    @media (max-width: 768px) {
+      .charts-container {
+        flex-direction: column; /* モバイルでは縦積み */
+      }
+      .chart-wrapper {
+        width: 100%;
+        max-width: none;
+        margin-bottom: 30px;
+      }
+    }
     /* アペンディックス用追加スタイル */
     .appendix-content {
-      margin-top: 20px;
+      max-height: calc(100% - 160px); /* 見出し、洞察ボックス、ナビゲーション分の余白 */
+      overflow-y: auto;
+      padding-right: 15px; /* スクロールバー分 */
     }
-    .two-column-layout {
-      display: flex;
-      justify-content: space-between;
-      gap: 30px;
-      margin-bottom: 30px;
+    /* スクロールバーのスタイル */
+    #slide11 .appendix-content::-webkit-scrollbar {
+      width: 6px;
     }
-    .left-column, .right-column {
-      flex: 1;
+    #slide11 .appendix-content::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 3px;
     }
-    .model-comparison {
-      display: flex;
-      flex-direction: column;
+    #slide11 .appendix-content::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 3px;
+    }
+    #slide11 .appendix-content::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+    }
+    /* アペンディックス内部要素の調整 */
+    #slide11 .two-column-layout {
       gap: 20px;
     }
-    .model-block {
-      background-color: #f8f9fb;
-      border-radius: 5px;
-      padding: 15px;
-      position: relative;
+    #slide11 .subheading {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 22px;
     }
-    .claude-block {
-      border-left: 4px solid #8A6BE8;
+    #slide11 .model-block {
+      padding: 10px;
+      margin-bottom: 15px;
     }
-    .chatgpt-block {
-      border-left: 4px solid #10A37F;
+    #slide11 .model-block ul {
+      margin: 5px 0;
     }
-    .model-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      color: white;
-      font-weight: bold;
-      font-size: 16px;
-      margin-right: 10px;
+    #slide11 .model-block li {
+      margin-bottom: 5px;
+      line-height: 1.4;
     }
-    .claude-block .model-icon {
-      background-color: #8A6BE8;
+    #slide11 .workflow-steps {
+      gap: 8px;
     }
-    .chatgpt-block .model-icon {
-      background-color: #10A37F;
+    #slide11 .workflow-step {
+      gap: 8px;
     }
-    .model-block h3 {
-      display: inline-block;
-      margin: 0 0 10px 0;
-      font-size: 20px;
-      font-weight: 500;
+    #slide11 .step-content {
+      padding: 8px 10px;
     }
-    .model-block ul {
-      margin: 0;
-      padding-left: 20px;
+    #slide11 .step-content h3 {
+      font-size: 15px;
     }
-    .model-block li {
-      margin-bottom: 8px;
-      font-size: 16px;
-    }
-    .workflow-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    .workflow-step {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    .step-number {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background-color: #2D3E50;
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-    }
-    .step-content {
-      flex: 1;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #f8f9fb;
-      padding: 10px 15px;
-      border-radius: 4px;
-    }
-    .step-content h3 {
-      margin: 0;
-      font-size: 16px;
-      font-weight: 500;
-    }
-    .step-owner {
-      background-color: #e1e5eb;
-      padding: 4px 10px;
-      border-radius: 4px;
-      font-size: 14px;
-      font-weight: 500;
-    }
-    .claude-owner {
-      background-color: #EDE7FC;
-      color: #8A6BE8;
-    }
-    .chatgpt-owner {
-      background-color: #E3F6F2;
-      color: #10A37F;
-    }
-    .strategic-insight {
-      margin-top: 30px;
-      background-color: #f0f7fd;
-      border-left: 4px solid #3498DB;
-      padding: 15px 20px;
-      border-radius: 0 4px 4px 0;
-    }
-    .strategic-insight p {
-      margin: 10px 0;
-      line-height: 1.6;
-    }
-    .note {
+    #slide11 .strategic-insight {
       margin-top: 15px;
-      font-size: 14px;
-      color: #666;
-      font-style: italic;
+      padding: 10px 15px;
+    }
+    #slide11 .strategic-insight p {
+      font-size: 16px;
+      margin: 5px 0;
+      line-height: 1.5;
+    }
+    #slide11 .note {
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    @media (max-width: 768px) {
+      #slide11 .two-column-layout {
+        flex-direction: column;
+        gap: 15px;
+      }
+      #slide11 .left-column,
+      #slide11 .right-column {
+        width: 100%;
+      }
+      #slide11 .appendix-content {
+        max-height: calc(100% - 140px);
+        padding-right: 5px;
+      }
+      #slide11 .model-block,
+      #slide11 .workflow-steps {
+        margin-bottom: 10px;
+      }
+    }
+    @media (max-width: 480px) or (max-height: 480px) {
+      #slide11 .heading {
+        font-size: 24px;
+      }
+      #slide11 .insight-box {
+        font-size: 14px;
+        padding: 10px;
+        margin-bottom: 15px;
+      }
+      #slide11 .subheading {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
@@ -437,10 +434,16 @@
         <td>・価値付加・意思決定: 50%</td>
       </tr>
     </table>
-    <!-- 円グラフ：Chart.jsで描画 -->
-    <div class="pie-charts">
-      <canvas id="pieTraditional" width="200" height="200"></canvas>
-      <canvas id="pieNew" width="200" height="200"></canvas>
+    <!-- 円グラフ部分：新しい横並びレイアウト -->
+    <div class="charts-container">
+      <div class="chart-wrapper">
+        <h3 class="chart-title">従来型</h3>
+        <canvas id="traditional-chart"></canvas>
+      </div>
+      <div class="chart-wrapper">
+        <h3 class="chart-title">新時代</h3>
+        <canvas id="new-age-chart"></canvas>
+      </div>
     </div>
     <div class="nav">
       <button class="nav-button prev">&larr;</button>
@@ -455,7 +458,6 @@
     <div class="insight-box">
       マネジメント革新: AI駆動プランニングの真価は「実行」から「設計・監督・価値付加」という高次マネジメントサイクルへの移行にある。
     </div>
-    <!-- 各フェーズを.phase-itemで区切り -->
     <div class="phase-item">
       <p><strong>フェーズ1: 戦略設計</strong><br>
       成果の明確な定義と評価基準の確立、情報リソースの最適配分</p>
@@ -563,7 +565,8 @@
     <div class="insight-box">
       各AIモデルの特性を理解し、最適なワークフローを構築することで、効果と品質を両立したプランニングを実現する
     </div>
-    <div class="appendix-content">
+    <!-- アペンディックスコンテンツにスクロール可能属性を追加 -->
+    <div class="appendix-content" tabindex="0" title="スクロールして続きを表示">
       <div class="two-column-layout">
         <div class="left-column">
           <h2 class="subheading" style="font-size: 30px; color: #2D3E50;">AIモデル特性比較</h2>
@@ -661,7 +664,7 @@
   <!-- JavaScript -->
   <script>
     let currentSlide = 1;
-    const totalSlides = 11; // スライド総数を11に更新
+    const totalSlides = 11; // 総スライド数を11に更新
 
     // 指定スライドを表示する関数
     function showSlide(slideNumber) {
@@ -719,37 +722,51 @@
     // Chart.js を使用した円グラフ描画（スライド6）
     window.addEventListener('load', () => {
       showSlide(currentSlide);
-      // 従来型円グラフ
-      const ctxTrad = document.getElementById('pieTraditional').getContext('2d');
-      new Chart(ctxTrad, {
+      const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              padding: 20,
+              font: {
+                size: 14
+              },
+              boxWidth: 15
+            }
+          }
+        }
+      };
+
+      // 従来型の円グラフ
+      const traditionalCtx = document.getElementById('traditional-chart').getContext('2d');
+      new Chart(traditionalCtx, {
         type: 'pie',
         data: {
-          labels: ['情報収集', '分析', 'アウトプット作成'],
+          labels: ['情報収集 40%', '分析 30%', 'アウトプット作成 30%'],
           datasets: [{
             data: [40, 30, 30],
-            backgroundColor: ['#95A5A6', '#7f8c8d', '#bdc3c7']
+            backgroundColor: ['#95A5A6', '#ADB9BD', '#C5CED1'],
+            borderWidth: 0
           }]
         },
-        options: {
-          responsive: false,
-          maintainAspectRatio: false
-        }
+        options: chartOptions
       });
-      // AI駆動型円グラフ
-      const ctxNew = document.getElementById('pieNew').getContext('2d');
-      new Chart(ctxNew, {
+
+      // 新時代の円グラフ
+      const newAgeCtx = document.getElementById('new-age-chart').getContext('2d');
+      new Chart(newAgeCtx, {
         type: 'pie',
         data: {
-          labels: ['AI指示設計', 'AI出力評価', '価値付加・意思決定'],
+          labels: ['AI指示設計 20%', 'AI出力評価 30%', '価値付加・意思決定 50%'],
           datasets: [{
             data: [20, 30, 50],
-            backgroundColor: ['#3498DB', '#5dade2', '#2874a6']
+            backgroundColor: ['#3498DB', '#5dade2', '#2874a6'],
+            borderWidth: 0
           }]
         },
-        options: {
-          responsive: false,
-          maintainAspectRatio: false
-        }
+        options: chartOptions
       });
     });
   </script>
